@@ -6,7 +6,7 @@ The system helps HR teams manage new employees by automatically assigning onboar
 
 ---
 
-## 🎯 What Does This Project Do?
+##  What Does This Project Do?
 
 Employee onboarding usually involves several manual activities such as:
 
