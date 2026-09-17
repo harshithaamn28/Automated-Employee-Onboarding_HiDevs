@@ -1,0 +1,51 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AI-powered onboarding application deployment on AWS
+
+Parameters:
+  ContainerImage:
+    Type: String
+    Default: public.ecr.aws/docker/library/python:3.12-slim
+  AppPort:
+    Type: Number
+    Default: 8501
+
+Resources:
+  OnboardingCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: onboarding-ai-cluster
+
+  OnboardingTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: onboarding-ai-task
+      Cpu: '256'
+      Memory: '512'
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+        - FARGATE
+      ContainerDefinitions:
+        - Name: onboarding-app
+          Image: !Ref ContainerImage
+          PortMappings:
+            - ContainerPort: !Ref AppPort
+              HostPort: !Ref AppPort
+          Essential: true
+          Environment:
+            - Name: PORT
+              Value: !Ref AppPort
+
+  OnboardingService:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster: !Ref OnboardingCluster
+      DesiredCount: 1
+      LaunchType: FARGATE
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          SecurityGroups:
+            - sg-0123456789abcdef0
+          Subnets:
+            - subnet-0123456789abcdef0
+      TaskDefinition: !Ref OnboardingTaskDefinition
