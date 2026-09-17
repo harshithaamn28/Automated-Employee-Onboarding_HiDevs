@@ -1,36 +1,41 @@
 # Automated Employee Onboarding
 
-AI-powered onboarding system that automates task assignment, document collection, welcome email communication, and onboarding monitoring.
+An AI-powered employee onboarding system designed to automate and simplify the employee onboarding process.
 
-## Features
+The system helps HR teams manage new employees by automatically assigning onboarding tasks, tracking required documents, generating welcome emails, answering common employee questions, and monitoring onboarding progress through an interactive dashboard.
 
-- Assigns onboarding tasks to each new employee
-- Tracks pending documents and completion status
-- Generates welcome emails
-- Answers employee onboarding questions
-- Displays completion and onboarding metrics
-- Includes a Streamlit dashboard for local demo use
+---
 
-## Installation
+## 🎯 What Does This Project Do?
 
-```sh
-pip install -r requirements.txt
-```
+Employee onboarding usually involves several manual activities such as:
 
-## Run locally
+- Assigning tasks to new employees
+- Collecting identity and employment documents
+- Tracking which documents are missing
+- Sending welcome emails
+- Monitoring task completion
+- Answering common onboarding questions
 
-```sh
-streamlit run app/dashboard.py
-```
+This project brings these activities together into a single automated system.
 
-## Run as a module
+### Example Workflow
 
-```sh
-python -m app
-```
+A new employee is added to the system:
 
-## Test
-
-```sh
-pytest -q
-```
+```text
+New Employee
+     ↓
+Employee Profile Created
+     ↓
+Onboarding Tasks Assigned
+     ↓
+Required Documents Requested
+     ↓
+Documents Uploaded & Tracked
+     ↓
+Welcome Email Generated
+     ↓
+Employee Questions Answered
+     ↓
+Onboarding Progress Monitored
